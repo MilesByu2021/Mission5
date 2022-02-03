@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Movie List";
+}
+
+@*import model list*@
+@model List<AddNewMovie>
+
+@*Declared variable of list*@
+
+<table class="table table-bordered table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+
+            <td>Title</td>
+
+            <td>Year</td>
+
+            <td>Director</td>
+
+            <td>Rating</td>
+
+            <td>Edited</td>
+
+            <td>Lent</td>
+
+            <td>Notes</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @*Model is defined as using the type whcih has been declared*@
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Category.CategoryName </td>
+                <td>@x.Title </td>
+                <td>@x.Year  </td>
+                <td>@x.Director  </td>
+                <td>@x.Rating </td>
+                <td>@x.Edited </td>
+                <td>@x.Lent   </td>
+                <td>@x.Notes  </td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edited</a>   </td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a>   </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
